@@ -1,4 +1,4 @@
-FROM  ubuntu
+FROM centurylink/ca-certs
 
 ADD . .
 

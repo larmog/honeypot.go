@@ -5,7 +5,8 @@ keygen:
 	@if [ ! -f rsa.key ]; then ssh-keygen -P "" -f rsa.key && rm rsa.key.pub; fi
 
 get:
-	@go get .
+	go get -u golang.org/x/crypto/ssh
+	go get -u golang.org/x/crypto/ssh/terminal
 
 install:
 	@go install -v .
@@ -16,7 +17,9 @@ run: format
 	@go run -race $(package).go
 
 build: test
-	go build -v $(package).go
+	GOOS=linux GOARCH=arm GOARM=7 CGO_ENABLED=0 go build  -v $(package).go
+	GOOS=linux GOARCH=arm GOARM=7 CGO_ENABLED=0 go build --ldflags '-extldflags "-static"' -o honeypot_static
+	#go build -v $(package).go
 
 format:
 	go fmt *.go

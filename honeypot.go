@@ -1,12 +1,12 @@
 package main
 
 import (
-	"code.google.com/p/go.crypto/ssh"
-	"code.google.com/p/go.crypto/ssh/terminal"
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"github.com/pmylund/go-cache"
+	"golang.org/x/crypto/ssh"
+	"golang.org/x/crypto/ssh/terminal"
 	"io"
 	"io/ioutil"
 	"log"
